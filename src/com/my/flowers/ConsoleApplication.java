@@ -1,6 +1,5 @@
 package com.my.flowers;
 
-import com.gmail.chernii.oleksii.FlowerStore;
 import com.my.flowers.entity.Flower;
 
 /**

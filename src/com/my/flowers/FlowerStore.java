@@ -1,12 +1,9 @@
-package com.gmail.chernii.oleksii;
+package com.my.flowers;
 
 import com.my.flowers.entity.Chamomile;
 import com.my.flowers.entity.Flower;
 import com.my.flowers.entity.Rose;
 import com.my.flowers.entity.Tulip;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Space on 11.03.2019.
@@ -42,42 +39,32 @@ public class FlowerStore {
     }
 
     public Flower[] sellSequence(int numRoses, int numChamomile, int numTulip) {
-        int max = max(numRoses, numChamomile, numTulip);
-        int[] nums = {numRoses, numChamomile, numTulip};
         int length = numRoses + numChamomile + numTulip;
-        List<Flower> flowers = fillList(max * 3, nums);
-
-        return flowers.toArray(new Flower[length]);
-    }
-
-    private int max(int numRoses, int numChamomile, int numTulip) {
-        int length = Math.max(numChamomile, numTulip);
-        length = Math.max(length, numRoses);
-        return length;
-    }
-
-    private List<Flower> fillList(int length, int[] nums) {
-        List<Flower> list = new ArrayList<>();
-        for (int i = 0; i < length; i++) {
-            if (i % 3 == 0 && nums[0] > 0) {
+        Flower[] flowers = new Flower[length];
+        int index = 0;
+        while (numRoses > 0 || numChamomile > 0 || numTulip > 0) {
+            if (numRoses > 0) {
                 Rose rose = new Rose(100);
-                list.add(rose);
+                flowers[index++] = rose;
+                numRoses--;
                 money += rose.getPrice();
-                nums[0]--;
             }
-            if (i % 3 == 1 && nums[1] > 0) {
+            if (numChamomile > 0) {
                 Chamomile chamomile = new Chamomile(70);
-                list.add(chamomile);
+                flowers[index++] = chamomile;
+                numChamomile--;
                 money += chamomile.getPrice();
-                nums[1]--;
             }
-            if (i % 3 == 2 && nums[2] > 0) {
+            if (numTulip > 0) {
                 Tulip tulip = new Tulip(45);
-                list.add(tulip);
+                flowers[index++] = tulip;
+                numTulip--;
                 money += tulip.getPrice();
-                nums[2]--;
             }
         }
-        return list;
+        return flowers;
+
     }
+
+
 }
