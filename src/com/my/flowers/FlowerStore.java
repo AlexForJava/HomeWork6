@@ -1,9 +1,9 @@
 package com.gmail.chernii.oleksii;
 
-import com.gmail.chernii.oleksii.flowers.Chamomile;
-import com.gmail.chernii.oleksii.flowers.Flower;
-import com.gmail.chernii.oleksii.flowers.Rose;
-import com.gmail.chernii.oleksii.flowers.Tulip;
+import com.my.flowers.entity.Chamomile;
+import com.my.flowers.entity.Flower;
+import com.my.flowers.entity.Rose;
+import com.my.flowers.entity.Tulip;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,16 +23,19 @@ public class FlowerStore {
         Flower[] flowers = new Flower[length];
         for (int i = 0; i < length; i++) {
             if (i < numRoses) {
-                flowers[i] = new Rose();
-                money += Rose.PRICE;
+                Rose rose = new Rose(100);
+                flowers[i] = rose;
+                money += rose.getPrice();
             }
             if (i >= numRoses && i < numRoses + numChamomile) {
-                flowers[i] = new Chamomile();
-                money += Chamomile.PRICE;
+                Chamomile chamomile = new Chamomile(70);
+                flowers[i] = chamomile;
+                money += chamomile.getPrice();
             }
             if (i >= numRoses + numChamomile) {
-                flowers[i] = new Tulip();
-                money += Tulip.PRICE;
+                Tulip tulip = new Tulip(45);
+                flowers[i] = tulip;
+                money += tulip.getPrice();
             }
         }
         return flowers;
@@ -57,18 +60,21 @@ public class FlowerStore {
         List<Flower> list = new ArrayList<>();
         for (int i = 0; i < length; i++) {
             if (i % 3 == 0 && nums[0] > 0) {
-                list.add(new Rose());
-                money += Rose.PRICE;
+                Rose rose = new Rose(100);
+                list.add(rose);
+                money += rose.getPrice();
                 nums[0]--;
             }
             if (i % 3 == 1 && nums[1] > 0) {
-                list.add(new Chamomile());
-                money += Chamomile.PRICE;
+                Chamomile chamomile = new Chamomile(70);
+                list.add(chamomile);
+                money += chamomile.getPrice();
                 nums[1]--;
             }
             if (i % 3 == 2 && nums[2] > 0) {
-                list.add(new Tulip());
-                money += Tulip.PRICE;
+                Tulip tulip = new Tulip(45);
+                list.add(tulip);
+                money += tulip.getPrice();
                 nums[2]--;
             }
         }

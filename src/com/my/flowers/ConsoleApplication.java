@@ -1,11 +1,12 @@
-package com.gmail.chernii.oleksii;
+package com.my.flowers;
 
-import com.gmail.chernii.oleksii.flowers.Flower;
+import com.gmail.chernii.oleksii.FlowerStore;
+import com.my.flowers.entity.Flower;
 
 /**
  * Created by Space on 11.03.2019.
  */
-public class Main {
+public class ConsoleApplication {
     public static void main(String[] args) {
         FlowerStore flowerStore = new FlowerStore();
         Flower[] flowers1 = flowerStore.sell(2, 4, 5);
